@@ -1,4 +1,3 @@
-# === IMPORTS ===
 import re
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -12,9 +11,9 @@ import numpy as np
 
 def clean_text(text):
     text = str(text).lower()
-    text = re.sub(r"http\S+", "", text)           # remove URLs
-    text = re.sub(r"[^a-z\s]", "", text)         # remove punctuation/numbers
-    text = re.sub(r"\s+", " ", text).strip()     # remove extra spaces
+    text = re.sub(r"http\S+", "", text) # remove URLs
+    text = re.sub(r"[^a-z\s]", "", text) # remove punctuation/numbers
+    text = re.sub(r"\s+", " ", text).strip() # remove extra spaces
     return text
 
 scraped_posts = []

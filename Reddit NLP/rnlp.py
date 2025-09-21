@@ -11,7 +11,7 @@ from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout, Bidirection
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from sklearn.metrics import classification_report, confusion_matrix
 
-df = pd.read_csv("reddit_labeled_data.csv")
+df = pd.read_csv("Reddit_Data.csv")
 
 def clean_text(text):
     text = str(text).lower()
@@ -20,11 +20,11 @@ def clean_text(text):
     text = re.sub(r"\s+", " ", text).strip() # remove extra spaces
     return text
 
-df['cleaned_text'] = df['text'].apply(clean_text)
+df['cleaned_text'] = df['clean_comment'].apply(clean_text)
 
 X_train, X_test, y_train, y_test = train_test_split(
-    df['cleaned_text'], df['label'], 
-    test_size=0.2, random_state=42, stratify=df['label']
+    df['cleaned_text'], df['category'], 
+    test_size=0.2, random_state=42, stratify=df['category']
 )
 
 # Tokenisation
